@@ -75,3 +75,7 @@ Guardamos el archivo y realizamos el siguiente comando para acabar de construir 
 Y para finalizar, iniciaremos docker:
 
 `docker run --rm -d -p 8080:80 --name web webserver`
+
+Con el siguiente resultado:
+
+![imagen](https://user-images.githubusercontent.com/95173613/168889420-69ada652-fbd6-4470-a419-253b16c17b24.png)
