@@ -48,3 +48,30 @@ Y realizaremos el siguiente comando:
 ## Resultado
 
 ![imagen](https://user-images.githubusercontent.com/95173613/168657181-e4d552dc-b9ba-4f1f-9797-dffd71c22dea.png)
+
+## Crear una imagen personalizada
+
+Una manera de añadir portabilidad a nuestro nginx es crear una imagen. 
+
+La crearemos usando un `Dockerfile`, que será un archivo de configuración de nuestra imagen. Para hacerlo tenemos que crear un archivo llamado *Dockerfile* en la carpeta nginx anterior y pegar el siguiente contenido:
+
+```
+FROM nginx:latest
+COPY ./site-content/index.html /usr/share/nginx/html/index.html
+```
+
+*El comando FROM extraerá la última imagen de nginx a nuestra máquina y construirá la imagen encima de ella*
+
+A continuación, copiaremos nuestro index.html a `/usr/share/nginx/html`, sustituyendo al que está por defecto.
+
+Guardamos el archivo y realizamos el siguiente comando para acabar de construir la imagen:
+
+`docker build -t webserver .`
+
+![imagen](https://user-images.githubusercontent.com/95173613/168889069-cfc32541-615c-4319-88f8-9a24051011c2.png)
+
+*webserver es el nombre, le podemos dar el nombre que queramos*
+
+Y para finalizar, iniciaremos docker:
+
+`docker run --rm -d -p 8080:80 --name web webserver`
